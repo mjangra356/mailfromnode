@@ -1,0 +1,1 @@
+app/api-endpoint which sends emails from localhost to specified email address using nodemailer
