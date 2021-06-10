@@ -8,7 +8,7 @@ const readFile = utils.promisify(fs.readFile)
 async function getTemplateHTML(){
     console.log("Loading template file in memory");
     try{
-        const invoicePath = path.resolve("./Untitleddocument.html");
+        const invoicePath = path.resolve("./invoice.html");
         return await readFile(invoicePath,'utf8');
     } catch(err){
         return Promise.reject("Could not load html template");
@@ -25,7 +25,7 @@ async function generatePdf(){
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
         await page.setContent(html);
-        await page.pdf({path: 'example.pdf' , format:'A4'});
+        await page.pdf({path: 'invoice.pdf' , format:'A4'});
         await browser.close();
         console.log("Pdf generated")
     }).catch(err =>{
