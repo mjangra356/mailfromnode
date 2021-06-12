@@ -27,20 +27,22 @@ async function sendMail(mail){
 
 
     }catch(err){
-        return error
+        return err
     }
 }
 
 
 
-app.get('/getMail/:id', (req, res) => {
+app.get('/getMail/:id',async (req, res) => {
     const {id} = req.params;
-    sendMail(id).then(result=> {
-        res.send('Email sent successfully!!!');
-        console.log('Email sent successfully...',result)
-    })
-    .catch(error=> console.log(error.message))
-
+    const sent = await sendMail(id);
+    if(sent.accepted){
+        res.send("Email sent to "+[sent.accepted]);
+        console.log('Email sent successfully ',sent);
+    }else{
+        console.log('Mail not sent',sent);
+        res.send('Mail not sent');
+    }
   })
   
   app.listen(port, (req,res) => {
