@@ -26,8 +26,13 @@ async function sendMail(mail){
         return result;
 
 
-    }catch(err){
-        return err
+<<<<<<< HEAD
+    }catch(error){
+        return error
+=======
+    }catch(error){
+        return error
+>>>>>>> 043b0e5f9698b628d27811883605decfdbf3ac48
     }
 }
 
