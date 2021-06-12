@@ -26,8 +26,8 @@ async function sendMail(mail){
         return result;
 
 
-    }catch(error){
-        return error
+    }catch(err){
+        return err
     }
 }
 
